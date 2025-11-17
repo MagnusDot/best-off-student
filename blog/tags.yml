@@ -1,0 +1,44 @@
+introduction:
+  label: Introduction
+  permalink: /introduction
+  description: Articles d'introduction et de présentation du blog
+
+concept:
+  label: Concept
+  permalink: /concept
+  description: Articles expliquant le concept et la philosophie du blog
+
+erreurs:
+  label: Erreurs
+  permalink: /erreurs
+  description: Exemples d'erreurs commises par les étudiants
+
+ia:
+  label: IA / LLM
+  permalink: /ia
+  description: Articles liés à l'utilisation abusive des IA et LLM
+
+code:
+  label: Code
+  permalink: /code
+  description: Exemples de code problématique ou erroné
+
+pedagogie:
+  label: Pédagogie
+  permalink: /pedagogie
+  description: Articles sur l'enseignement et l'apprentissage
+
+bonnes-pratiques:
+  label: Bonnes pratiques
+  permalink: /bonnes-pratiques
+  description: Conseils et bonnes pratiques pour éviter les erreurs
+
+docker:
+  label: Docker
+  permalink: /docker
+  description: Erreurs et problèmes liés à Docker
+
+git:
+  label: Git
+  permalink: /git
+  description: Erreurs et problèmes liés à Git
