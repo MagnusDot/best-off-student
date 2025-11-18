@@ -42,3 +42,8 @@ git:
   label: Git
   permalink: /git
   description: Erreurs et problèmes liés à Git
+
+detection:
+  label: Détection
+  permalink: /detection
+  description: Méthodes et techniques pour détecter l'utilisation abusive des outils
