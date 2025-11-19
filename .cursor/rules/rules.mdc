@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+# Règles Cursor pour le projet Magnus Dev
+
+## Format des fichiers
+
+- **Blog** : Toujours utiliser le format `.mdx` (et non `.md`) pour les articles de blog dans le dossier `blog/`
+- Les fichiers de blog doivent être créés avec l'extension `.mdx` pour permettre l'utilisation de composants React
+- Exemple : `blog/YYYY-MM-DD-nom-article/index.mdx`
+
+## Structure des articles de blog
+
+- Utiliser le format MDX pour tous les nouveaux articles de blog
+- Les articles peuvent inclure des composants React interactifs
+- Le frontmatter doit inclure : slug, title, authors, tags, date, description
+
+## Documentation
+
+- Les fichiers de documentation dans `docs/` peuvent utiliser `.md` ou `.mdx` selon les besoins
+- Pour les pages nécessitant de l'interactivité, utiliser `.mdx`
