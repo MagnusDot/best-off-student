@@ -46,7 +46,7 @@ export default function Home() {
               </Link>
               <Link
                 className={styles.ctaButton}
-                to="/docs"
+                to="/docs/intro"
                 aria-label="Accéder à la documentation">
                 Documentation
               </Link>
@@ -108,7 +108,7 @@ export default function Home() {
               </Link>
               <Link
                 className={styles.ctaButtonSecondary}
-                to="/docs"
+                to="/docs/intro"
                 aria-label="Accéder à la documentation">
                 Accéder à la documentation
               </Link>
