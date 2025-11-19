@@ -25,6 +25,25 @@ alwaysApply: true
 - Les pages peuvent inclure des composants React interactifs
 - Le frontmatter doit inclure : id, title, sidebar_position (si applicable), image (si applicable)
 
+## Configuration des catégories
+
+- **Lier le titre de catégorie à la page d'introduction** : Pour que le titre de catégorie dans la sidebar ouvre la page d'introduction et que cette page n'apparaisse plus dans la liste :
+  1. Dans le fichier `_category_.json` de la catégorie, ajouter un lien vers la page intro :
+     ```json
+     {
+       "label": "Nom de la catégorie",
+       "position": 2,
+       "collapsed": true,
+       "link": {
+         "type": "doc",
+         "id": "nom-categorie/intro"
+       }
+     }
+     ```
+  2. Dans la page d'introduction (`intro.mdx`), **ne pas inclure** `sidebar_position` dans le frontmatter (ou le retirer si présent)
+  3. Le frontmatter de la page intro doit contenir : `id: intro`, `title: Introduction`, et l'image si applicable
+- Cette configuration permet de cliquer sur le titre de catégorie pour accéder à l'introduction, sans que la page intro apparaisse en double dans la liste
+
 ## Imports Backlinks (OBLIGATOIRE)
 
 - **TOUJOURS** importer le composant Backlink dans tous les fichiers `.mdx`
