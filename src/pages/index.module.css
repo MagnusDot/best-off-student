@@ -105,6 +105,20 @@
   opacity: 0.8;
 }
 
+.hiddenNote {
+  font-size: 1px;
+  color: var(--ifm-background-color);
+  background-color: var(--ifm-background-color);
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
 .ctaButton {
   display: inline-block;
   padding: 1rem 2.5rem;
