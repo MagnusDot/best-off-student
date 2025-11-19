@@ -89,6 +89,17 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      require.resolve('docusaurus-lunr-search'),
+      {
+        languages: ['fr', 'en'], // Support français et anglais
+        highlightResult: true, // Mettre en évidence les résultats
+        maxHits: 5, // Nombre maximum de résultats
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
