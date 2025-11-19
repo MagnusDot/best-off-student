@@ -1,5 +1,11 @@
 magnus:
   name: Magnus
-  title: Prof en école d'ingénieur développeur
+  title: Lead Developer - AI Software Engineer, Formateur
   page: true
-  image_url: https://avatars.githubusercontent.com/u/39904918?v=4
+  image_url: /img/magnus_profil.png
+  description: >
+    Développeur passionné qui adore relever des défis techniques de toutes sortes ! 
+    Je partage mon temps entre le développement (full-stack, agents IA) et 
+    la formation dans plusieurs écoles d'ingénieur. Quand je ne code pas ou n'enseigne pas, 
+    je partage mes découvertes et mes expériences sur ce blog. N'hésitez pas à me contacter 
+    si vous avez des défis intéressants à partager !
