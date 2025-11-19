@@ -98,6 +98,34 @@ const config = {
         maxHits: 5, // Nombre maximum de résultats
       },
     ],
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: false,
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/favicon.ico',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/site.webmanifest',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: '#007AFF',
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig:

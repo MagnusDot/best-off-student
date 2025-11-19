@@ -1,19 +1,41 @@
 {
   "name": "Magnus Dev",
   "short_name": "Magnus Dev",
+  "description": "Partage de ma vie de développeur, professeur et ingénieur en IA",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/img/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/img/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/screenshots/desktop-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Capture d'écran de Magnus Dev sur desktop"
+    },
+    {
+      "src": "/img/screenshots/desktop-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Capture d'écran de Magnus Dev sur mobile"
     }
   ],
   "theme_color": "#007AFF",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary"
 }
