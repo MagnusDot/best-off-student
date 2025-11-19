@@ -200,6 +200,60 @@ users[2]{id,name,role}:
 
 Génère maintenant une liste de 3 produits au format TOON avec les champs : id, name, price, category
 
+## Utilisation avec des agents
+
+TOON est particulièrement adapté pour les systèmes d'agents qui communiquent avec des LLM. Le diagramme suivant illustre le flux d'utilisation :
+
+```mermaid
+graph TD
+    A[Agent collecte des données] -->|Données JSON| B[Conversion en TOON]
+    B -->|Réduction ~70% tokens| C[Prompt avec TOON]
+    C -->|Envoi optimisé| D[LLM traite le prompt]
+    D -->|Réponse en TOON| E[Agent parse la réponse]
+    E -->|Données structurées| F[Agent utilise les données]
+    
+    B -.->|encode| G["@toon-format/toon"]
+    E -.->|decode| G
+    
+    style A fill:#e1f5ff
+    style D fill:#fff4e1
+    style F fill:#e8f5e9
+    style G fill:#f3e5f5
+```
+
+### Avantages pour les agents
+
+1. **Réduction des coûts** : Moins de tokens = coûts d'API réduits
+2. **Latence améliorée** : Moins de données à transmettre = réponses plus rapides
+3. **Meilleure compréhension** : Le format auto-documenté aide le LLM à mieux comprendre la structure
+4. **Parsing simplifié** : Les bibliothèques TOON facilitent la conversion bidirectionnelle
+
+### Exemple de workflow agent
+
+```typescript
+import { encode, decode } from '@toon-format/toon';
+
+// Agent collecte des données
+const userData = {
+  users: [
+    { id: 1, name: 'Alice', role: 'admin' },
+    { id: 2, name: 'Bob', role: 'user' }
+  ]
+};
+
+// Conversion en TOON pour le prompt
+const toonData = encode(userData);
+const prompt = `Voici les utilisateurs au format TOON:\n\`\`\`toon\n${toonData}\n\`\`\`\nAnalyse-les et génère un rapport.`;
+
+// LLM répond en TOON
+const llmResponse = `products[2]{id,name,price}:
+  1,Laptop,999
+  2,Mouse,29`;
+
+// Agent parse la réponse
+const products = decode(llmResponse);
+console.log(products); // { products: [{ id: 1, name: 'Laptop', price: 999 }, ...] }
+```
 
 ## Installation et utilisation
 
