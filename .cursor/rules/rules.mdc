@@ -6,9 +6,12 @@ alwaysApply: true
 
 ## Format des fichiers
 
-- **Blog** : Toujours utiliser le format `.mdx` (et non `.md`) pour les articles de blog dans le dossier `blog/`
-- Les fichiers de blog doivent être créés avec l'extension `.mdx` pour permettre l'utilisation de composants React
-- Exemple : `blog/YYYY-MM-DD-nom-article/index.mdx`
+- **Tous les fichiers** : Toujours utiliser le format `.mdx` (et non `.md`) pour tous les fichiers de contenu
+- **Blog** : Toujours utiliser le format `.mdx` pour les articles de blog dans le dossier `blog/`
+- **Documentation** : Toujours utiliser le format `.mdx` pour les fichiers de documentation dans `docs/`
+- Les fichiers doivent être créés avec l'extension `.mdx` pour permettre l'utilisation de composants React
+- Exemple blog : `blog/YYYY-MM-DD-nom-article/index.mdx`
+- Exemple docs : `docs/category/page.mdx`
 
 ## Structure des articles de blog
 
@@ -18,5 +21,38 @@ alwaysApply: true
 
 ## Documentation
 
-- Les fichiers de documentation dans `docs/` peuvent utiliser `.md` ou `.mdx` selon les besoins
-- Pour les pages nécessitant de l'interactivité, utiliser `.mdx`
+- Utiliser le format MDX pour tous les fichiers de documentation dans `docs/`
+- Les pages peuvent inclure des composants React interactifs
+- Le frontmatter doit inclure : id, title, sidebar_position (si applicable), image (si applicable)
+
+## Imports Backlinks (OBLIGATOIRE)
+
+- **TOUJOURS** importer le composant Backlink dans tous les fichiers `.mdx`
+- L'import doit être placé après le frontmatter YAML et avant le contenu Markdown
+- Le composant `<Backlink />` doit être ajouté à la fin de chaque page
+- Format obligatoire :
+
+```mdx
+---
+id: page-id
+title: Page Title
+---
+
+import { Backlink } from '@koroligor/docusaurus-plugin-backlinks/components';
+
+# Contenu de la page
+
+... contenu ...
+
+<Backlink documentPath="/docs/chemin-de-la-page" />
+```
+
+- Pour les articles de blog : `<Backlink documentPath="/blog/slug-article" />`
+- Pour les pages de documentation : `<Backlink documentPath="/docs/chemin-page" />`
+- Le `documentPath` doit correspondre exactement au chemin de la page (sans extension)
+
+## Préservation des imports
+
+- **NE JAMAIS** supprimer les imports dans les fichiers `.mdx`
+- Les imports doivent être préservés entre le frontmatter YAML et le contenu Markdown
+- Le formatage automatique est désactivé pour les fichiers `.mdx` pour préserver les imports

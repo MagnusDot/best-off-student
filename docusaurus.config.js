@@ -126,6 +126,7 @@ const config = {
         ],
       },
     ],
+    '@koroligor/docusaurus-plugin-backlinks',
   ],
 
   themeConfig:
