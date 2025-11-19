@@ -2,7 +2,7 @@
 slug: triche-à-répétition
 title: "Comment j'ai détecté l'utilisation abusive des LLM"
 authors: [magnus]
-tags: [pedagogie, ia, erreurs, detection, git]
+tags: [pedagogie, ia, erreurs, detection, git, perles-etudiantes]
 date: 2025-11-17
 description: "Retour d'expérience sur la mise en place de pièges pour détecter l'utilisation abusive des LLM et encourager la réflexion chez les étudiants."
 ---

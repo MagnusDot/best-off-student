@@ -47,3 +47,8 @@ detection:
   label: Détection
   permalink: /detection
   description: Méthodes et techniques pour détecter l'utilisation abusive des outils
+
+perles-etudiantes:
+  label: Perles étudiantes
+  permalink: /perles-etudiantes
+  description: Les meilleurs moments, réponses créatives, trouvailles amusantes et cas de triche de mes étudiants
