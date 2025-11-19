@@ -1,6 +1,9 @@
 {
   "label": "Triche étudiante",
   "position": 2,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "prof-triche/intro"
+  }
 }
-
