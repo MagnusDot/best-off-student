@@ -1,5 +1,5 @@
 ---
-title: Triche étudiante
+title: Introduction
 sidebar_position: 1
 ---
 

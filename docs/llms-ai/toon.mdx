@@ -1,0 +1,244 @@
+---
+id: toon
+title: "TOON - Token-Oriented Object Notation"
+sidebar_position: 2
+---
+
+import { useState } from 'react';
+
+# TOON - Token-Oriented Object Notation
+
+[TOON](https://github.com/toon-format/toon) (Token-Oriented Object Notation) est un format de sérialisation compact, lisible par l'homme et conscient du schéma, conçu spécifiquement pour les prompts LLM. Il permet de réduire significativement le nombre de tokens utilisés tout en restant lisible.
+
+## Qu'est-ce que TOON ?
+
+TOON est une alternative compacte à JSON qui :
+
+- **Réduit les tokens** : Jusqu'à 70% de tokens en moins par rapport à JSON
+- **Reste lisible** : Format lisible par l'homme
+- **Conscient du schéma** : Le schéma est intégré dans le format
+- **Optimisé pour les LLM** : Conçu spécifiquement pour les prompts d'IA
+
+## Format de base
+
+TOON utilise une syntaxe compacte où le schéma est défini dans l'en-tête :
+
+```toon
+users[2]{id,name,role}:
+  1,Alice,admin
+  2,Bob,user
+```
+
+Au lieu de JSON :
+
+```json
+{
+  "users": [
+    { "id": 1, "name": "Alice", "role": "admin" },
+    { "id": 2, "name": "Bob", "role": "user" }
+  ]
+}
+```
+
+## Exemple interactif
+
+Essayez de convertir du JSON en TOON :
+
+export const ToonConverter = () => {
+  const [jsonInput, setJsonInput] = useState(`{
+  "users": [
+    { "id": 1, "name": "Alice", "role": "admin" },
+    { "id": 2, "name": "Bob", "role": "user" }
+  ]
+}`);
+  const [toonOutput, setToonOutput] = useState('');
+
+  const convertToToon = () => {
+    try {
+      const data = JSON.parse(jsonInput);
+      
+      // Conversion simple pour l'exemple
+      if (data.users && Array.isArray(data.users)) {
+        const users = data.users;
+        const fields = Object.keys(users[0] || {});
+        const toon = `users[${users.length}]{${fields.join(',')}}:\n${users.map(u => 
+          `  ${fields.map(f => u[f]).join(',')}`
+        ).join('\n')}`;
+        setToonOutput(toon);
+      } else {
+        setToonOutput('Format JSON non supporté pour cet exemple. Utilisez un objet avec un tableau "users".');
+      }
+    } catch (e) {
+      setToonOutput('Erreur : JSON invalide');
+    }
+  };
+
+  return (
+    <div style={{
+      padding: '2rem',
+      margin: '2rem 0',
+      border: '2px solid var(--ifm-color-primary)',
+      borderRadius: '10px',
+      backgroundColor: 'var(--ifm-background-surface-color)',
+    }}>
+      <h3>Convertisseur JSON vers TOON</h3>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+        <div>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+            JSON :
+          </label>
+          <textarea
+            value={jsonInput}
+            onChange={(e) => setJsonInput(e.target.value)}
+            style={{
+              width: '100%',
+              minHeight: '200px',
+              padding: '0.5rem',
+              fontFamily: 'monospace',
+              fontSize: '0.9rem',
+              border: '1px solid var(--ifm-color-emphasis-300)',
+              borderRadius: '5px',
+              backgroundColor: 'var(--ifm-background-color)',
+              color: 'var(--ifm-color-content)',
+            }}
+          />
+        </div>
+        <div>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+            TOON :
+          </label>
+          <textarea
+            value={toonOutput}
+            readOnly
+            style={{
+              width: '100%',
+              minHeight: '200px',
+              padding: '0.5rem',
+              fontFamily: 'monospace',
+              fontSize: '0.9rem',
+              border: '1px solid var(--ifm-color-emphasis-300)',
+              borderRadius: '5px',
+              backgroundColor: 'var(--ifm-background-surface-color)',
+              color: 'var(--ifm-color-content)',
+            }}
+          />
+        </div>
+      </div>
+      <button
+        onClick={convertToToon}
+        style={{
+          marginTop: '1rem',
+          padding: '0.75rem 1.5rem',
+          fontSize: '1rem',
+          backgroundColor: 'var(--ifm-color-primary)',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseOver={(e) => {
+          e.target.style.transform = 'scale(1.05)';
+          e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+        }}
+        onMouseOut={(e) => {
+          e.target.style.transform = 'scale(1)';
+          e.target.style.boxShadow = 'none';
+        }}
+      >
+        Convertir en TOON
+      </button>
+    </div>
+  );
+};
+
+<ToonConverter />
+
+## Avantages de TOON
+
+### Réduction des tokens
+
+TOON peut réduire jusqu'à 70% le nombre de tokens par rapport à JSON, ce qui est crucial pour les prompts LLM où chaque token compte.
+
+### Lisibilité
+
+Même s'il est compact, TOON reste lisible par l'homme, ce qui facilite le débogage et la maintenance.
+
+### Optimisé pour les LLM
+
+TOON est conçu spécifiquement pour être utilisé avec les LLM. Le format est auto-documenté et les modèles comprennent naturellement la structure.
+
+## Utilisation avec les LLM
+
+Pour utiliser TOON avec les LLM, il est recommandé de :
+
+1. **Montrer le format** plutôt que de le décrire
+2. **Utiliser des blocs de code** avec la syntaxe ` ```toon `
+3. **Montrer le template d'en-tête** quand on demande aux modèles de générer du TOON
+
+### Exemple de prompt
+
+
+Voici un exemple de données au format TOON :
+
+```toon
+users[2]{id,name,role}:
+  1,Alice,admin
+  2,Bob,user
+```
+
+Génère maintenant une liste de 3 produits au format TOON avec les champs : id, name, price, category
+
+
+## Installation et utilisation
+
+### CLI (sans installation)
+
+```bash
+# Convertir JSON en TOON
+npx @toon-format/cli input.json -o output.toon
+
+# Depuis stdin
+echo '{"name": "Ada", "role": "dev"}' | npx @toon-format/cli
+```
+
+### Bibliothèque TypeScript
+
+```bash
+npm install @toon-format/toon
+```
+
+```typescript
+import { encode } from '@toon-format/toon'
+
+const data = {
+  users: [
+    { id: 1, name: 'Alice', role: 'admin' },
+    { id: 2, name: 'Bob', role: 'user' }
+  ]
+}
+
+console.log(encode(data))
+// users[2]{id,name,role}:
+//   1,Alice,admin
+//   2,Bob,user
+```
+
+## Cas d'usage
+
+TOON est particulièrement utile pour :
+
+- **Prompts LLM** : Réduire les coûts de tokens
+- **Données structurées** : Transmettre des données complexes de manière compacte
+- **APIs** : Réponses plus légères
+- **Stockage** : Format compact pour les données
+
+## Ressources
+
+- [GitHub Repository](https://github.com/toon-format/toon)
+- [Documentation officielle](https://toonformat.dev)
+
+## Conclusion
+
+TOON est un format innovant qui combine compacité et lisibilité, parfait pour les interactions avec les LLM. Il permet de réduire significativement les coûts de tokens tout en gardant un format lisible et maintenable.
+

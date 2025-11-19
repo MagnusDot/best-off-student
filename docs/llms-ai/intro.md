@@ -1,0 +1,23 @@
+---
+id: intro
+title: Introduction
+sidebar_position: 1
+---
+
+# LLMs et AI
+
+Cette section contient de la documentation sur les LLM (Large Language Models) et l'intelligence artificielle, leur utilisation dans le développement et l'éducation, et les réflexions sur leur impact.
+
+## À propos
+
+Les LLM et l'IA sont devenus des outils incontournables dans le développement et l'éducation. Cette section rassemble :
+
+- Des réflexions sur l'utilisation des LLM et de l'IA
+- Des bonnes pratiques pour utiliser ces outils de manière critique
+- Des retours d'expérience sur leur impact dans l'enseignement
+- Des guides et ressources sur l'utilisation responsable de ces technologies
+
+## Contenu
+
+Cette section sera régulièrement mise à jour avec de nouveaux contenus et ressources.
+
