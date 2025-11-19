@@ -56,3 +56,29 @@ import { Backlink } from '@koroligor/docusaurus-plugin-backlinks/components';
 - **NE JAMAIS** supprimer les imports dans les fichiers `.mdx`
 - Les imports doivent être préservés entre le frontmatter YAML et le contenu Markdown
 - Le formatage automatique est désactivé pour les fichiers `.mdx` pour préserver les imports
+
+## Diagrammes Mermaid
+
+- **Mermaid est activé** dans le projet et peut être utilisé dans tous les fichiers `.mdx`
+- Utiliser des blocs de code avec la syntaxe `mermaid` pour créer des diagrammes
+- Format :
+
+````mdx
+```mermaid
+graph TD
+    A --> B
+    B --> C
+```
+````
+
+- Types de diagrammes disponibles :
+  - Diagrammes de flux (flowchart)
+  - Diagrammes de séquence
+  - Diagrammes de classe
+  - Diagrammes d'état
+  - Diagrammes de Gantt
+  - Diagrammes en camembert
+  - Diagrammes Git
+  - Et plus encore...
+
+- Les diagrammes s'adaptent automatiquement au thème clair/sombre du site

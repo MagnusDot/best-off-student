@@ -4,8 +4,8 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import dotenv from 'dotenv';
-import { themes as prismThemes } from 'prism-react-renderer';
+import dotenv from "dotenv";
+import { themes as prismThemes } from "prism-react-renderer";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -14,9 +14,9 @@ dotenv.config();
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Magnus Dev',
-  tagline: 'Partage de ma vie de développeur, professeur et ingénieur en IA',
-  favicon: 'img/favicon.ico',
+  title: "Magnus Dev",
+  tagline: "Partage de ma vie de développeur, professeur et ingénieur en IA",
+  favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -24,34 +24,38 @@ const config = {
   },
 
   // Set the production url of your site here (without sub-path)
-  url: process.env.SITE_URL || 'https://your-docusaurus-site.example.com',
+  url: process.env.SITE_URL || "https://your-docusaurus-site.example.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/',
+  baseUrl: process.env.BASE_URL || "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: process.env.GITHUB_ORG || 'your-github-username', // Usually your GitHub org/user name.
-  projectName: process.env.GITHUB_REPO || 'best-off-student', // Usually your repo name.
+  organizationName: process.env.GITHUB_ORG || "your-github-username", // Usually your GitHub org/user name.
+  projectName: process.env.GITHUB_REPO || "best-off-student", // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'fr',
-    locales: ['fr'],
+    defaultLocale: "fr",
+    locales: ["fr"],
+  },
+
+  markdown: {
+    mermaid: true,
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
-          routeBasePath: 'docs',
+          sidebarPath: "./sidebars.js",
+          routeBasePath: "docs",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -62,7 +66,7 @@ const config = {
         blog: {
           showReadingTime: true,
           feedOptions: {
-            type: ['rss', 'atom'],
+            type: ["rss", "atom"],
             xslt: true,
           },
           // Please change this to your repo.
@@ -72,18 +76,18 @@ const config = {
               ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}/tree/main/`
               : undefined,
           // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onInlineTags: "warn",
+          onInlineAuthors: "warn",
+          onUntruncatedBlogPosts: "warn",
         },
         sitemap: {
-          changefreq: 'weekly',
+          changefreq: "weekly",
           priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       }),
     ],
@@ -91,106 +95,112 @@ const config = {
 
   plugins: [
     [
-      require.resolve('docusaurus-lunr-search'),
+      require.resolve("docusaurus-lunr-search"),
       {
-        languages: ['fr', 'en'], // Support français et anglais
+        languages: ["fr", "en"], // Support français et anglais
         highlightResult: true, // Mettre en évidence les résultats
         maxHits: 5, // Nombre maximum de résultats
       },
     ],
     [
-      '@docusaurus/plugin-pwa',
+      "@docusaurus/plugin-pwa",
       {
         debug: false,
         offlineModeActivationStrategies: [
-          'appInstalled',
-          'standalone',
-          'queryString',
+          "appInstalled",
+          "standalone",
+          "queryString",
         ],
         pwaHead: [
           {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/favicon.ico',
+            tagName: "link",
+            rel: "icon",
+            href: "/img/favicon.ico",
           },
           {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/site.webmanifest',
+            tagName: "link",
+            rel: "manifest",
+            href: "/site.webmanifest",
           },
           {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: '#007AFF',
+            tagName: "meta",
+            name: "theme-color",
+            content: "#007AFF",
           },
         ],
       },
     ],
-    '@koroligor/docusaurus-plugin-backlinks',
+    "@koroligor/docusaurus-plugin-backlinks",
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/image.png',
+      image: "img/image.png",
       metadata: [
-        {name: 'keywords', content: 'développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, bonnes pratiques, docker, git, formation développeur'},
-        {name: 'author', content: 'Magnus'},
-        {property: 'og:type', content: 'website'},
-        {property: 'og:locale', content: 'fr_FR'},
-        {name: 'twitter:card', content: 'summary_large_image'},
+        {
+          name: "keywords",
+          content:
+            "développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, bonnes pratiques, docker, git, formation développeur",
+        },
+        { name: "author", content: "Magnus" },
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "fr_FR" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Magnus Dev',
+        title: "Magnus Dev",
         logo: {
-          alt: 'Magnus Dev - Logo',
-          src: 'img/image.png',
+          alt: "Magnus Dev - Logo",
+          src: "img/image.png",
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Documentation',
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "Documentation",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "/blog", label: "Blog", position: "left" },
           {
-            href: process.env.GITHUB_ORG && process.env.GITHUB_REPO
-              ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}`
-              : 'https://github.com',
-            label: 'GitHub',
-            position: 'right',
+            href:
+              process.env.GITHUB_ORG && process.env.GITHUB_REPO
+                ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}`
+                : "https://github.com",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Documentation',
+            title: "Documentation",
             items: [
               {
-                label: 'Documentation',
-                to: '/docs/intro',
+                label: "Documentation",
+                to: "/docs/intro",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: process.env.GITHUB_ORG && process.env.GITHUB_REPO
-                  ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}`
-                  : 'https://github.com',
+                label: "GitHub",
+                href:
+                  process.env.GITHUB_ORG && process.env.GITHUB_REPO
+                    ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}`
+                    : "https://github.com",
               },
             ],
           },
@@ -201,7 +211,12 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      mermaid: {
+        theme: { light: "default", dark: "dark" },
+      },
     }),
+
+  themes: ["@docusaurus/theme-mermaid"],
 };
 
 export default config;
