@@ -35,16 +35,24 @@ jobs:
 
       - name: Build website
         run: |
-          # Déterminer le baseUrl : si c'est un repo username.github.io, utiliser '/', sinon '/repo-name/'
-          if [ "$REPO_NAME" = "$REPO_OWNER.github.io" ]; then
-            DEFAULT_BASE_URL="/"
-          else
-            DEFAULT_BASE_URL="/$REPO_NAME/"
-          fi
+          # Déterminer le baseUrl
           export SITE_URL="${SITE_URL:-https://$REPO_OWNER.github.io}"
-          export BASE_URL="${BASE_URL:-$DEFAULT_BASE_URL}"
+          
+          # Si BASE_URL est défini dans les secrets, l'utiliser (priorité)
+          if [ -n "$BASE_URL" ]; then
+            # BASE_URL est déjà défini, on l'utilise tel quel
+            :
+          # Si SITE_URL est un nom de domaine personnalisé (NDD) → baseUrl = '/'
+          elif [[ ! "$SITE_URL" =~ \.github\.io$ ]]; then
+            export BASE_URL="/"
+          # Sinon (déploiement standard GitHub Pages) → baseUrl = '/nom-du-repo/'
+          else
+            export BASE_URL="/$REPO_NAME/"
+          fi
+          
           export GITHUB_ORG="$REPO_OWNER"
           export GITHUB_REPO="$REPO_NAME"
+          echo "Building with SITE_URL=$SITE_URL"
           echo "Building with BASE_URL=$BASE_URL"
           npm run build
         env:
