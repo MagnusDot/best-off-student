@@ -1,47 +1,56 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import SEOHead from '@site/src/components/SEOHead';
 import Layout from '@theme/Layout';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './index.module.css';
 
 export default function Home() {
-  const logoUrl = useBaseUrl('/img/Image transparente remove.bg.png');
+  const logoUrl = useBaseUrl('/img/image.png');
   
   return (
     <>
       <SEOHead 
         title="Accueil"
-        description="Blog pédagogique sur les erreurs commises par les étudiants en école d'ingénieur développeur. Exemples concrets, bonnes pratiques et sensibilisation à l'utilisation critique des IA et LLM en programmation."
-        keywords="développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, bonnes pratiques"
+        description="Partage de ma vie de développeur, professeur et ingénieur en IA. Blog personnel, documentation et ressources pédagogiques."
+        keywords="développement, programmation, étudiants, école ingénieur, IA, LLM, pédagogie, ingénieur IA, développement web, triche académique"
       />
       <Layout
-        title="Best Off Student - Erreurs d'étudiants en développement"
-        description="Blog pédagogique sur les erreurs commises par les étudiants en école d'ingénieur développeur. Exemples concrets, bonnes pratiques et sensibilisation à l'utilisation critique des IA et LLM en programmation.">
+        title="Magnus Dev - Développeur, Professeur et Ingénieur en IA"
+        description="Partage de ma vie de développeur, professeur et ingénieur en IA. Blog personnel, documentation et ressources pédagogiques.">
       <main className={styles.homepage}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <img 
               src={logoUrl} 
-              alt="Best Off Student Logo" 
+              alt="Magnus Dev Logo" 
               className={styles.heroLogo}
             />
             <h1 className={styles.heroTitle}>
-              Best Off Student
+              Magnus Dev
             </h1>
             <p className={styles.heroSubtitle}>
-              Une collection des meilleurs moments
+              Partage de mes expériences et trouvailles intéressantes
             </p>
             <p className={styles.heroDescription}>
-              Ce blog rassemble les perles, les réponses créatives et les moments mémorables 
-              que mes étudiants en école d'ingénieur développeur ont partagés lors des contrôles.
+              Bienvenue sur mon site personnel ! Je partage ici ma vie de développeur, mes trouvailles 
+              sur la triche étudiante en tant que professeur, mes expériences en ingénierie IA, et bien d'autres 
+              découvertes intéressantes. L'objectif : partager ce que j'apprends au quotidien.
             </p>
-            <Link
-              className={styles.ctaButton}
-              to="/blog"
-              aria-label="Découvrir les articles du blog Best Off Student">
-              Découvrir les articles
-            </Link>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link
+                className={styles.ctaButton}
+                to="/blog"
+                aria-label="Découvrir les articles du blog">
+                Découvrir le blog
+              </Link>
+              <Link
+                className={styles.ctaButton}
+                to="/docs"
+                aria-label="Accéder à la documentation">
+                Documentation
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -53,27 +62,27 @@ export default function Home() {
             </h2>
             <div className={styles.aboutGrid}>
               <div className={styles.aboutCard}>
-                <div className={styles.cardIcon}>💡</div>
-                <h3 className={styles.cardTitle}>Réponses créatives</h3>
+                <div className={styles.cardIcon}>💻</div>
+                <h3 className={styles.cardTitle}>Vie de développeur</h3>
                 <p className={styles.cardDescription}>
-                  Les solutions les plus originales et inattendues que j'ai pu découvrir 
-                  dans les copies de mes étudiants.
+                  Je partage mes expériences de développement, mes projets, 
+                  mes découvertes techniques et les leçons apprises au quotidien.
                 </p>
               </div>
               <div className={styles.aboutCard}>
-                <div className={styles.cardIcon}>🎯</div>
-                <h3 className={styles.cardTitle}>Moments mémorables</h3>
+                <div className={styles.cardIcon}>🔍</div>
+                <h3 className={styles.cardTitle}>Trouvailles en tant que prof</h3>
                 <p className={styles.cardDescription}>
-                  Les citations, les explications et les réalisations qui m'ont marqué 
-                  au fil des années d'enseignement.
+                  Découvrez mes trouvailles sur la triche étudiante, mes méthodes de détection, 
+                  et mes réflexions sur l'enseignement et la pédagogie.
                 </p>
               </div>
               <div className={styles.aboutCard}>
-                <div className={styles.cardIcon}>🚀</div>
-                <h3 className={styles.cardTitle}>Apprentissage</h3>
+                <div className={styles.cardIcon}>🤖</div>
+                <h3 className={styles.cardTitle}>Expériences en IA</h3>
                 <p className={styles.cardDescription}>
-                  Une façon légère et positive de partager l'expérience de l'enseignement 
-                  et de célébrer la créativité des étudiants.
+                  Partage de mes expériences en ingénierie IA, réflexions sur les LLM, 
+                  et leur impact dans le développement et l'éducation.
                 </p>
               </div>
             </div>
@@ -84,17 +93,26 @@ export default function Home() {
         <section className={styles.cta}>
           <div className={styles.ctaContent}>
             <h2 className={styles.ctaTitle}>
-              Prêt à découvrir ?
+              Prêt à découvrir mes expériences ?
             </h2>
             <p className={styles.ctaDescription}>
-              Explorez les articles et découvrez les meilleurs moments de mes étudiants.
+              Explorez mes articles de blog et ma documentation pour découvrir mes trouvailles 
+              et expériences en développement, enseignement et IA.
             </p>
-            <Link
-              className={styles.ctaButtonSecondary}
-              to="/blog"
-              aria-label="Voir tous les articles du blog Best Off Student">
-              Voir tous les articles
-            </Link>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link
+                className={styles.ctaButtonSecondary}
+                to="/blog"
+                aria-label="Voir tous les articles du blog">
+                Voir le blog
+              </Link>
+              <Link
+                className={styles.ctaButtonSecondary}
+                to="/docs"
+                aria-label="Accéder à la documentation">
+                Accéder à la documentation
+              </Link>
+            </div>
           </div>
         </section>
       </main>

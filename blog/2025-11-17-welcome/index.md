@@ -1,13 +1,14 @@
 ---
 slug: welcome
-title: Bienvenue sur Best Off Student
+title: Bienvenue sur Magnus Dev
 authors: [magnus]
 tags: [introduction, concept]
+date: 2025-11-17
 description: Découvrez le concept de ce blog pédagogique qui met en lumière les erreurs des étudiants en développement, l'utilisation abusive des IA sans vérification, et comment apprendre de ces erreurs.
 keywords: [développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, formation]
 ---
 
-# Bienvenue sur Best Off Student
+# Bienvenue sur Magnus Dev
 
 Ce blog a pour objectif de mettre en lumière les erreurs les plus flagrantes commises par mes étudiants en école d'ingénieur développeur.
 

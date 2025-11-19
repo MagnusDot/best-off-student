@@ -7,9 +7,9 @@ export default function SEOHead({title, description, keywords, image, type = 'we
   const {siteConfig} = useDocusaurusContext();
   const siteUrl = siteConfig.url || 'https://your-docusaurus-site.example.com';
   const baseUrl = siteConfig.baseUrl || '/';
-  const fullTitle = title ? `${title} | Best Off Student` : 'Best Off Student - Erreurs d\'étudiants en développement';
+  const fullTitle = title ? `${title} | Magnus Dev` : 'Magnus Dev - Développeur, Professeur et Ingénieur en IA';
   const fullDescription = description || 'Blog pédagogique sur les erreurs commises par les étudiants en école d\'ingénieur développeur. Exemples concrets, bonnes pratiques et sensibilisation à l\'utilisation critique des IA et LLM en programmation.';
-  const defaultImageUrl = useBaseUrl('/img/bestoff.jpg');
+  const defaultImageUrl = useBaseUrl('/img/image.png');
   const fullImage = image || `${siteUrl}${defaultImageUrl}`;
   const defaultKeywords = 'développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, bonnes pratiques, docker, git, formation développeur';
   const fullKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
@@ -17,7 +17,7 @@ export default function SEOHead({title, description, keywords, image, type = 'we
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'Best Off Student',
+    name: 'Magnus Dev',
     description: fullDescription,
     url: siteUrl,
     author: {
@@ -27,7 +27,7 @@ export default function SEOHead({title, description, keywords, image, type = 'we
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Best Off Student',
+      name: 'Magnus Dev',
     },
     inLanguage: 'fr-FR',
   };
@@ -51,7 +51,7 @@ export default function SEOHead({title, description, keywords, image, type = 'we
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
       <meta property="og:locale" content="fr_FR" />
-      <meta property="og:site_name" content="Best Off Student" />
+      <meta property="og:site_name" content="Magnus Dev" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

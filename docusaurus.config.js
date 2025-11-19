@@ -14,8 +14,8 @@ dotenv.config();
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Best Off Student',
-  tagline: 'Les meilleurs moments de mes étudiants en école d\'ingénieur développeur',
+  title: 'Magnus Dev',
+  tagline: 'Partage de ma vie de développeur, professeur et ingénieur en IA',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -49,7 +49,16 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: false,
+        docs: {
+          sidebarPath: './sidebars.js',
+          routeBasePath: 'docs',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            process.env.GITHUB_ORG && process.env.GITHUB_REPO
+              ? `https://github.com/${process.env.GITHUB_ORG}/${process.env.GITHUB_REPO}/tree/main/`
+              : undefined,
+        },
         blog: {
           showReadingTime: true,
           feedOptions: {
@@ -84,7 +93,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/bestoff.jpg',
+      image: 'img/image.png',
       metadata: [
         {name: 'keywords', content: 'développement, programmation, étudiants, école ingénieur, erreurs code, IA, LLM, pédagogie, bonnes pratiques, docker, git, formation développeur'},
         {name: 'author', content: 'Magnus'},
@@ -96,12 +105,18 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Best Off Student',
+        title: 'Magnus Dev',
         logo: {
-          alt: 'Best Off Student - Logo',
-          src: 'img/Image transparente remove.bg.png',
+          alt: 'Magnus Dev - Logo',
+          src: 'img/image.png',
         },
         items: [
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Documentation',
+          },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: process.env.GITHUB_ORG && process.env.GITHUB_REPO
@@ -115,6 +130,15 @@ const config = {
       footer: {
         style: 'dark',
         links: [
+          {
+            title: 'Documentation',
+            items: [
+              {
+                label: 'Documentation',
+                to: '/docs',
+              },
+            ],
+          },
           {
             title: 'More',
             items: [
@@ -131,7 +155,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Best Off Student. Tous droits réservés.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Magnus Dev. Tous droits réservés.`,
       },
       prism: {
         theme: prismThemes.github,
