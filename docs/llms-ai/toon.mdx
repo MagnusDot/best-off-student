@@ -5,6 +5,7 @@ sidebar_position: 2
 ---
 
 import { useState } from 'react';
+import { encode } from '@toon-format/toon';
 
 # TOON - Token-Oriented Object Notation
 
@@ -52,24 +53,20 @@ export const ToonConverter = () => {
   ]
 }`);
   const [toonOutput, setToonOutput] = useState('');
+  const [error, setError] = useState('');
 
   const convertToToon = () => {
     try {
+      setError('');
       const data = JSON.parse(jsonInput);
       
-      // Conversion simple pour l'exemple
-      if (data.users && Array.isArray(data.users)) {
-        const users = data.users;
-        const fields = Object.keys(users[0] || {});
-        const toon = `users[${users.length}]{${fields.join(',')}}:\n${users.map(u => 
-          `  ${fields.map(f => u[f]).join(',')}`
-        ).join('\n')}`;
-        setToonOutput(toon);
-      } else {
-        setToonOutput('Format JSON non supporté pour cet exemple. Utilisez un objet avec un tableau "users".');
-      }
+      // Utiliser la bibliothèque officielle pour convertir n'importe quel objet
+      const toon = encode(data);
+      setToonOutput(toon);
     } catch (e) {
-      setToonOutput('Erreur : JSON invalide');
+      const errorMessage = e instanceof Error ? e.message : 'Erreur inconnue';
+      setError(`Erreur : ${errorMessage}`);
+      setToonOutput('');
     }
   };
 
@@ -82,6 +79,18 @@ export const ToonConverter = () => {
       backgroundColor: 'var(--ifm-background-surface-color)',
     }}>
       <h3>Convertisseur JSON vers TOON</h3>
+      {error && (
+        <div style={{
+          padding: '0.75rem',
+          marginBottom: '1rem',
+          backgroundColor: 'var(--ifm-color-danger)',
+          color: 'white',
+          borderRadius: '5px',
+          fontSize: '0.9rem',
+        }}>
+          {error}
+        </div>
+      )}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
         <div>
           <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
