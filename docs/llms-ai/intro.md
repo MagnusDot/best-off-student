@@ -2,6 +2,7 @@
 id: intro
 title: Introduction
 sidebar_position: 1
+image: "/img/docs/llms-ai-intro-card.jpg"
 ---
 
 # LLMs et AI

@@ -5,6 +5,7 @@ authors: [magnus]
 tags: [pedagogie, ia, erreurs, detection, git, perles-etudiantes]
 date: 2025-11-17
 description: "Retour d'expérience sur la mise en place de pièges pour détecter l'utilisation abusive des LLM et encourager la réflexion chez les étudiants."
+image: "/img/blog/triche-llm-card.jpg"
 ---
 
 # Comment j'ai détecté l'utilisation abusive des LLM : retour d'expérience

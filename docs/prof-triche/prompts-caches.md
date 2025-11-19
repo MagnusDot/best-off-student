@@ -2,6 +2,7 @@
 id: prompts-caches
 title: "Méthode des prompts cachés : détecter l'utilisation abusive des IA"
 sidebar_position: 2
+image: "/img/docs/prompts-caches-card.jpg"
 ---
 
 # Méthode des prompts cachés : détecter l'utilisation abusive des IA

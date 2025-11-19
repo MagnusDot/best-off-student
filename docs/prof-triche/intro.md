@@ -1,6 +1,7 @@
 ---
 title: Introduction
 sidebar_position: 1
+image: "/img/docs/prof-triche-intro-card.jpg"
 ---
 
 # Triche étudiante
