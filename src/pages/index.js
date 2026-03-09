@@ -288,6 +288,30 @@ export default function Home() {
                   </Link>
                 </div>
               </article>
+
+              <article className={styles.projectCard}>
+                <div className={styles.projectHeader}>
+                  <span className={styles.projectBadge}>En ligne</span>
+                  <h3 className={styles.projectTitle}>Estimation de projet</h3>
+                </div>
+                <p className={styles.projectDescription}>
+                  Un outil pour estimer plus rapidement la charge et le cadrage d'un projet.
+                </p>
+                <div className={styles.projectLinks}>
+                  <Link
+                    className={styles.projectLinkPrimary}
+                    to="https://estimation.h4ck3ur.com"
+                    aria-label="Ouvrir Estimation de projet">
+                    Voir le projet
+                  </Link>
+                  <Link
+                    className={styles.projectLinkSecondary}
+                    to="/mes-projets"
+                    aria-label="Voir tous mes projets">
+                    Tous mes projets
+                  </Link>
+                </div>
+              </article>
             </div>
           </div>
         </section>

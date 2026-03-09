@@ -10,6 +10,13 @@ const projects = [
     description:
       "Un projet de planification accessible en ligne pour centraliser et organiser un macro planning.",
   },
+  {
+    name: 'Estimation de projet',
+    href: 'https://estimation.h4ck3ur.com',
+    status: 'Disponible',
+    description:
+      "Un outil pour estimer plus rapidement la charge et le cadrage d'un projet.",
+  },
 ];
 
 export default function MesProjetsPage() {
