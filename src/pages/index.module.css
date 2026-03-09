@@ -563,6 +563,115 @@
   background: var(--ifm-code-background);
 }
 
+/* Projects Section */
+.projectsSection {
+  padding: 7rem 2rem;
+  background: linear-gradient(180deg, var(--ifm-color-emphasis-100) 0%, var(--ifm-background-color) 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.projectsContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectsIntro {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.projectCard {
+  padding: 2rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(0, 122, 255, 0.08), transparent 40%),
+    var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+}
+
+.projectHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.projectBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.projectTitle {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--ifm-heading-color);
+}
+
+.projectDescription {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ifm-color-content-secondary);
+  max-width: 720px;
+}
+
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.projectLinkPrimary,
+.projectLinkSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.85rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.projectLinkPrimary {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.projectLinkPrimary:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.projectLinkSecondary {
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.projectLinkSecondary:hover {
+  text-decoration: none;
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
 /* CTA Section */
 .cta {
   padding: 8rem 2rem;
@@ -774,6 +883,14 @@
     padding: 4rem 1.5rem;
   }
 
+  .projectsSection {
+    padding: 4rem 1.5rem;
+  }
+
+  .projectCard {
+    padding: 1.5rem;
+  }
+
   .cta {
     padding: 4rem 1.5rem;
   }
@@ -798,6 +915,12 @@
   border-color: var(--ifm-color-emphasis-300);
 }
 
+[data-theme='dark'] .projectCard {
+  background:
+    linear-gradient(135deg, rgba(0, 122, 255, 0.12), transparent 40%),
+    var(--ifm-background-surface-color);
+}
+
 [data-theme='dark'] .codeBlock {
   background: var(--ifm-code-background);
   border-color: var(--ifm-color-emphasis-300);
@@ -806,4 +929,3 @@
 [data-theme='dark'] .codeBlockHeader {
   background: var(--ifm-color-emphasis-200);
 }
-

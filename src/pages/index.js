@@ -253,6 +253,45 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.projectsSection}>
+          <div className={styles.projectsContent}>
+            <div className={styles.projectsIntro}>
+              <h2 className={styles.sectionTitle}>
+                Mes projets
+              </h2>
+              <p className={styles.sectionSubtitle}>
+                Quelques outils et expériences que je construis en dehors des articles.
+              </p>
+            </div>
+
+            <div className={styles.projectsGrid}>
+              <article className={styles.projectCard}>
+                <div className={styles.projectHeader}>
+                  <span className={styles.projectBadge}>En ligne</span>
+                  <h3 className={styles.projectTitle}>Macro Planning</h3>
+                </div>
+                <p className={styles.projectDescription}>
+                  Un projet orienté organisation et planification, accessible directement en ligne.
+                </p>
+                <div className={styles.projectLinks}>
+                  <Link
+                    className={styles.projectLinkPrimary}
+                    to="https://macro.h4ck3ur.com"
+                    aria-label="Ouvrir Macro Planning">
+                    Voir le projet
+                  </Link>
+                  <Link
+                    className={styles.projectLinkSecondary}
+                    to="/mes-projets"
+                    aria-label="Voir tous mes projets">
+                    Tous mes projets
+                  </Link>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className={styles.cta}>
           <div className={styles.ctaContent}>

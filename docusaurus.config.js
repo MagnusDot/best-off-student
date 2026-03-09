@@ -166,6 +166,7 @@ const config = {
             label: "Documentation",
           },
           { to: "/blog", label: "Blog", position: "left" },
+          { to: "/mes-projets", label: "Mes projets", position: "left" },
           {
             href:
               process.env.GITHUB_ORG && process.env.GITHUB_REPO
@@ -194,6 +195,10 @@ const config = {
               {
                 label: "Blog",
                 to: "/blog",
+              },
+              {
+                label: "Mes projets",
+                to: "/mes-projets",
               },
               {
                 label: "GitHub",

@@ -5,16 +5,16 @@
     "editor.formatOnSave": false,
     "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
-      "source.fixAll": false,
-      "source.organizeImports": false
+      "source.fixAll": "never",
+      "source.organizeImports": "never"
     }
   },
   "[markdown]": {
     "editor.formatOnSave": false,
     "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
-      "source.fixAll": false,
-      "source.organizeImports": false
+      "source.fixAll": "never",
+      "source.organizeImports": "never"
     }
   },
   "files.associations": {
