@@ -125,7 +125,7 @@ const config = {
           {
             tagName: "meta",
             name: "theme-color",
-            content: "#007AFF",
+            content: "#C0C0C0",
           },
         ],
       },
@@ -150,7 +150,9 @@ const config = {
         { name: "twitter:card", content: "summary_large_image" },
       ],
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: "light",
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
       navbar: {
         title: "Magnus Dev",
@@ -178,7 +180,7 @@ const config = {
         ],
       },
       footer: {
-        style: "dark",
+        style: "light",
         links: [
           {
             title: "Documentation",
