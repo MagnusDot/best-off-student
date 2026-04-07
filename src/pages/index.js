@@ -4,119 +4,110 @@ import Layout from '@theme/Layout';
 import {useEffect, useState} from 'react';
 import styles from './index.module.css';
 
-const phrases = [
-  'C:\\\\BLOG\\\\POSTS> dir /b',
-  'agent.think(); agent.act(); agent.learn();',
-  'git commit -m "feat: trouvailles du jour"',
-  'while (learning) { share(); }',
-  'REM pas de videos, juste du texte et du code',
+const scribbleNotes = [
+  "Aujourd'hui: partager ce qui marche vraiment.",
+  "A garder: les details qu'on oublie dans les slides.",
+  "Rappel: expliquer sans faire perdre du temps.",
+  "A tester: outils utiles avant effets de mode.",
 ];
 
-const shareRows = [
+const shareCards = [
   {
-    icon: '01',
-    title: 'Code & dev',
+    number: '01',
+    title: 'Code & terrain',
     description:
-      "Des bugs memorables, des details d'implementation, et les choix techniques qui valent la peine d'etre expliques.",
-    tag: 'CODING',
+      "Des bugs memorables, des choix techniques, et les compromis qui deviennent interessants des qu'on raconte le contexte.",
+    note: 'Brouillons, patterns, post-mortems',
   },
   {
-    icon: '02',
-    title: 'Trouvailles de prof',
+    number: '02',
+    title: 'Pedagogie utile',
     description:
-      "Des anecdotes de terrain, des methodes vues en cours, et la facon dont j'essaie de rendre tout ca utile plutot que moralisateur.",
-    tag: 'PEDAGOGIE',
+      "Des retours de cours, des facons d'expliquer plus clairement, et des idees pour rendre un sujet technique vraiment transmissible.",
+    note: 'Exemples, anecdotes, structure',
   },
   {
-    icon: '03',
+    number: '03',
     title: 'Agents IA & LLM',
     description:
-      "Orchestration, reasoning, tool calling, gestion d'etat: les bons patterns, les faux bons plans, et les pieges tres reels.",
-    tag: 'IA',
+      "Orchestration, outils, etat, erreurs, reprise: surtout les details qui comptent quand un systeme doit tenir au-dela d'une demo.",
+    note: 'Workflow, fiabilite, realite',
+  },
+];
+
+const processSteps = [
+  {
+    title: 'Observer',
+    body: "Je note les details qui coincent en vrai: une integration fragile, une UX mal comprise, ou un pattern prometteur qui craque.",
+  },
+  {
+    title: 'Tester',
+    body: "Je passe par des prototypes, de la doc, et parfois un petit outil maison pour verifier si l'idee tient.",
+  },
+  {
+    title: 'Partager',
+    body: "Je garde ensuite l'essentiel: ce qui peut faire gagner du temps a quelqu'un d'autre sans emballage inutile.",
   },
 ];
 
 const projectRows = [
   {
     name: 'Macro Planning',
-    status: 'EN LIGNE',
+    status: 'Pret a l emploi',
     description:
       'Centraliser un macro planning dans un outil accessible et simple a prendre en main.',
     href: 'https://macro.h4ck3ur.com',
+    angle: '-1.6deg',
   },
   {
     name: 'Estimation de projet',
-    status: 'EN LIGNE',
+    status: 'Utilise en vrai',
     description:
       "Un outil pour cadrer plus vite la charge, l'ampleur et les angles morts d'un projet.",
     href: 'https://estimation.h4ck3ur.com',
+    angle: '1.4deg',
   },
   {
     name: 'Timeline',
-    status: 'EN LIGNE',
+    status: 'Toujours pratique',
     description:
       'Un outil pour creer des timelines de projet, de formation, ou un melange des deux.',
     href: 'https://timeline.h4ck3ur.com/',
+    angle: '-0.9deg',
   },
 ];
 
 const marqueeItems = [
-  'WELCOME TO MAGNUS DEV',
-  'BEST VIEWED WITH CURIOSITY',
-  'NEW POSTS WHEN SOMETHING INTERESTING HAPPENS',
-  'TEXT FIRST, HYPE SECOND',
-  'AGENTS IA + BUGS BIZARRES + IDEES UTILES',
+  'NOTES DE DEV',
+  'PEDAGOGIE DE TERRAIN',
+  'AGENTS IA',
+  'OUTILS MAISON',
+  'IDEES UTILES',
 ];
 
 export default function Home() {
-  const [typedText, setTypedText] = useState('');
+  const [activeNote, setActiveNote] = useState(scribbleNotes[0]);
 
   useEffect(() => {
-    let currentPhrase = 0;
-    let currentChar = 0;
-    let deleting = false;
-    let timeoutId;
+    let currentIndex = 0;
+    const intervalId = window.setInterval(() => {
+      currentIndex = (currentIndex + 1) % scribbleNotes.length;
+      setActiveNote(scribbleNotes[currentIndex]);
+    }, 2800);
 
-    const tick = () => {
-      const phrase = phrases[currentPhrase];
-
-      if (deleting) {
-        currentChar -= 1;
-      } else {
-        currentChar += 1;
-      }
-
-      setTypedText(phrase.slice(0, currentChar));
-
-      if (!deleting && currentChar === phrase.length) {
-        deleting = true;
-        timeoutId = window.setTimeout(tick, 1400);
-        return;
-      }
-
-      if (deleting && currentChar === 0) {
-        deleting = false;
-        currentPhrase = (currentPhrase + 1) % phrases.length;
-      }
-
-      timeoutId = window.setTimeout(tick, deleting ? 45 : 85);
-    };
-
-    timeoutId = window.setTimeout(tick, 500);
-
-    return () => window.clearTimeout(timeoutId);
+    return () => window.clearInterval(intervalId);
   }, []);
 
   return (
     <>
       <SEOHead
         title="Accueil"
-        description="Magnus Dev partage du code, des trouvailles de prof, des retours sur les agents IA et des projets perso dans une ambiance retro assumee."
+        description="Magnus Dev partage du code, des trouvailles de prof, des retours sur les agents IA et des projets perso dans une ambiance hand-drawn assumee."
         keywords="developpement, programmation, agents IA, LLM, orchestration, reasoning, blog dev, pedagogie, projets web"
       />
       <Layout
         title="Magnus Dev"
-        description="Du texte, du code, des trouvailles utiles et une interface qui sent bon 1997.">
+        description="Du texte, du code, des trouvailles utiles et un site qui ressemble a un carnet de travail vivant.">
         <main className={`retro-theme retro-page-shell ${styles.homepage}`}>
           <div className="retro-page-width">
             <div className="retro-marquee" aria-label="Bandeau d'annonces">
@@ -128,215 +119,188 @@ export default function Home() {
             </div>
 
             <section className={styles.heroSection}>
-              <div className={`retro-window retro-window-strong ${styles.heroWindow}`}>
-                <div className="retro-window-titlebar">
-                  <span>magnus_dev.exe</span>
-                  <div className="retro-window-controls" aria-hidden="true">
-                    <span className="retro-window-control" />
-                    <span className="retro-window-control" />
-                    <span className="retro-window-control" />
-                  </div>
-                </div>
-
+              <div className={`${styles.heroFrame} retro-window retro-window-strong`}>
                 <div className={`retro-window-body ${styles.heroBody}`}>
-                  <div className={styles.heroMeta}>
-                    <span className="retro-eyebrow">Internet personnel depuis 1997*</span>
-                    <span className="retro-badge retro-badge-hot">NEW!</span>
-                  </div>
-
-                  <div className={styles.heroGrid}>
-                    <div className={styles.heroCopy}>
-                      <p className={styles.kicker}>Bienvenue sur mon coin de web bricole</p>
-                      <h1 className={`${styles.heroTitle} retro-rainbow`}>
-                        MAGNUS DEV
-                      </h1>
-                      <p className={styles.heroLead}>
-                        Un site pour partager ce que j&apos;apprends vraiment: bugs, outils,
-                        articles, projets et retours d&apos;experience sur les agents IA.
-                      </p>
-
-                      <div className={`retro-panel retro-panel-yellow ${styles.terminalPanel}`}>
-                        <p className={styles.terminalLabel}>Derniere ligne de commande:</p>
-                        <code className={`retro-code ${styles.terminalCode}`}>
-                          {typedText}
-                          <span className={styles.cursor} aria-hidden="true">
-                            _
-                          </span>
-                        </code>
-                      </div>
-
-                      <div className={styles.heroActions}>
-                        <Link className="retro-button retro-button-primary" to="/blog">
-                          Lire le blog
-                        </Link>
-                        <Link className="retro-button retro-button-outline" to="/docs/intro">
-                          Ouvrir la doc
-                        </Link>
-                      </div>
+                  <div className={styles.heroLeadColumn}>
+                    <div className={styles.heroIntro}>
+                      <span className="retro-eyebrow">Carnet de travail public</span>
+                      <span className={`retro-badge retro-badge-hot ${styles.heroBadge}`}>
+                        Notes fraiches
+                      </span>
                     </div>
 
-                    <aside className={styles.heroSidebar}>
-                      <div className="retro-counter">
-                        <div>VISITORS: <strong>0001297</strong></div>
-                        <div>SINCE: <strong>1995</strong></div>
-                        <div>STATUS: <strong>MODE DEV ACTIF</strong></div>
-                      </div>
+                    <div className={styles.heroHeadlineWrap}>
+                      <span className={styles.kicker}>Bonjour, je m'appelle Magnus.</span>
+                      <h1 className={styles.heroTitle}>
+                        Je transforme des idees techniques en notes claires, outils utiles et
+                        retours d'experience sans vernis corporate.
+                      </h1>
+                      <p className={styles.heroLead}>
+                        Ici, tout est pense comme un tableau de travail: des articles, des projets
+                        et des explications qui assument les ratures, les essais, et les vraies
+                        decisions prises en cours de route.
+                      </p>
+                    </div>
 
-                      <div className={`retro-panel ${styles.notePanel}`}>
-                        <h2 className={styles.sideTitle}>Pourquoi rester ici ?</h2>
-                        <p>
-                          Parce qu&apos;ici on prend le temps d&apos;expliquer. Pas de bruit de
-                          fond, juste des idees qui peuvent servir demain.
-                        </p>
-                      </div>
+                    <div className={styles.heroActions}>
+                      <Link className="retro-button retro-button-primary" to="/blog">
+                        Aller au blog
+                      </Link>
+                      <Link className="retro-button retro-button-outline" to="/docs/intro">
+                        Ouvrir la doc
+                      </Link>
+                    </div>
 
-                      <div className={styles.squareSection} aria-hidden="true">
-                        <div className="retro-color-squares">
-                          {['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'].map(
-                            (color) => (
-                              <span
-                                key={color}
-                                className="retro-color-square"
-                                style={{background: color}}
-                              />
-                            ),
-                          )}
+                    <div className={styles.metricsRow}>
+                      <div className={`retro-panel ${styles.metricCard}`}>
+                        <strong>3 sujets qui reviennent</strong>
+                        <span>Code, transmission, agents IA</span>
+                      </div>
+                      <div className={`retro-panel retro-panel-yellow ${styles.metricCard}`}>
+                        <strong>1 principe</strong>
+                        <span>Rendre le technique plus lisible</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <aside className={styles.heroSketchColumn}>
+                    <div className={`retro-panel retro-panel-yellow ${styles.noteCard}`}>
+                      <span className={styles.pin} aria-hidden="true" />
+                      <p className={styles.noteTitle}>Sur le bureau aujourd&apos;hui</p>
+                      <p className={styles.noteBody}>{activeNote}</p>
+                    </div>
+
+                    <div className={`retro-panel ${styles.sketchBoard}`}>
+                    <div className={styles.sketchHeader}>
+                      <span className="retro-badge">Pourquoi ce site</span>
+                    </div>
+
+                      <div className={styles.sketchCanvas} aria-hidden="true">
+                        <div className={styles.reasonList}>
+                          <div className={styles.reasonItem}>
+                            <span className={styles.reasonTitle}>Expliquer</span>
+                            <span className={styles.reasonCaption}>
+                              rendre un sujet technique plus clair
+                            </span>
+                          </div>
+                          <div className={styles.reasonItem}>
+                            <span className={styles.reasonTitle}>Verifier</span>
+                            <span className={styles.reasonCaption}>
+                              tester les idees dans de vrais projets
+                            </span>
+                          </div>
+                          <div className={styles.reasonItem}>
+                            <span className={styles.reasonTitle}>Partager</span>
+                            <span className={styles.reasonCaption}>
+                              garder en ligne ce qui peut vraiment servir
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </aside>
-                  </div>
+
+                      <p className={styles.boardText}>
+                        Ce site sert surtout a conserver des explications utiles, des essais
+                        verifies et quelques ressources assez claires pour etre retrouvees plus
+                        tard sans friction.
+                      </p>
+                    </div>
+                  </aside>
                 </div>
               </div>
             </section>
 
-            <hr className="retro-groove" />
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={`retro-badge ${styles.sectionTag}`}>Ce que vous trouverez ici</span>
+                <h2 className={styles.sectionTitle}>Trois piles de notes, pas une vitrine generique.</h2>
+              </div>
+
+              <div className={styles.shareGrid}>
+                {shareCards.map((card, index) => (
+                  <article
+                    key={card.title}
+                    className={`retro-panel ${styles.shareCard}`}
+                    style={{transform: `rotate(${index % 2 === 0 ? '-1.2deg' : '1deg'})`}}>
+                    <div className={styles.shareCardTop}>
+                      <span className={styles.shareNumber}>{card.number}</span>
+                      <span className="retro-badge">{card.note}</span>
+                    </div>
+                    <h3 className={styles.shareTitle}>{card.title}</h3>
+                    <p className={styles.shareDescription}>{card.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
 
             <section className={styles.section}>
-              <div className="retro-window">
-                <div className="retro-window-titlebar">
-                  <span>ce_que_je_partage.dat</span>
-                  <span>3 entrees</span>
-                </div>
-                <div className={`retro-window-body ${styles.sectionBody}`}>
-                  <p className={styles.sectionIntro}>
-                    Une interface retro, oui, mais un contenu tres concret: ce que j&apos;observe,
-                    ce que je teste et ce que j&apos;aurais aime lire plus tot.
-                  </p>
-
-                  <div className={styles.shareTable}>
-                    {shareRows.map((row) => (
-                      <article key={row.title} className={`retro-table-row ${styles.shareRow}`}>
-                        <div className={`retro-table-cell ${styles.shareIndex}`}>{row.icon}</div>
-                        <div className={`retro-table-cell ${styles.shareMain}`}>
-                          <h2 className={styles.rowTitle}>{row.title}</h2>
-                          <p>{row.description}</p>
-                        </div>
-                        <div className={`retro-table-cell ${styles.shareTag}`}>
-                          <span className="retro-badge">{row.tag}</span>
+              <div className={styles.processLayout}>
+                <div className={`retro-window ${styles.processWindow}`}>
+                  <div className="retro-window-titlebar">
+                    <span>Comment je construis ces contenus</span>
+                    <span>observe / teste / partage</span>
+                  </div>
+                  <div className={`retro-window-body ${styles.processBody}`}>
+                    {processSteps.map((step, index) => (
+                      <article key={step.title} className={styles.processStep}>
+                        <div className={styles.processIndex}>{index + 1}</div>
+                        <div>
+                          <h3 className={styles.processTitle}>{step.title}</h3>
+                          <p className={styles.processText}>{step.body}</p>
                         </div>
                       </article>
                     ))}
+                    <svg viewBox="0 0 600 120" className={styles.processLine} aria-hidden="true">
+                      <path d="M14 70 C140 20, 210 110, 320 56 S470 22, 586 68" />
+                    </svg>
                   </div>
+                </div>
+
+                <div className={`retro-panel retro-panel-yellow ${styles.pullQuote}`}>
+                  <p className={styles.pullQuoteLead}>Ce site prefere les explications utiles aux effets de manche.</p>
+                  <p className={styles.pullQuoteText}>
+                    Si un sujet est ici, c&apos;est qu&apos;il a laisse une trace dans un projet,
+                    un cours, un test, ou une discussion qui valait la peine d&apos;etre remise a
+                    plat.
+                  </p>
                 </div>
               </div>
             </section>
 
             <section className={styles.section}>
-              <div className={styles.twoColumn}>
-                <div className="retro-window">
-                  <div className="retro-window-titlebar">
-                    <span>agent-pattern.ts</span>
-                    <span>lecture seule</span>
-                  </div>
-                  <div className="retro-window-body">
-                    <pre className={`retro-panel ${styles.codePanel}`}>
-{`class AIAgent {
-  async think(context) {
-    return this.reasoner.analyze(context);
-  }
-
-  async act(plan) {
-    return this.executor.run(plan);
-  }
-
-  async learn(feedback) {
-    this.memory.update(feedback);
-  }
-}`}
-                    </pre>
-                  </div>
-                </div>
-
-                <div className="retro-window">
-                  <div className="retro-window-titlebar">
-                    <span>agents_ia.txt</span>
-                    <span>notes terrain</span>
-                  </div>
-                  <div className={`retro-window-body ${styles.agentBody}`}>
-                    <h2 className={styles.sectionHeading}>Agents IA: les vraies lecons</h2>
-                    <p>
-                      J&apos;ai travaille sur des systemes d&apos;agents IA assez complexes, donc je
-                      partage surtout les details qui comptent quand on sort des slides:
-                      orchestration, etat, erreurs, recuperation et choix d&apos;outils.
-                    </p>
-                    <ul className={styles.agentList}>
-                      <li>Les patterns qui survivent au reel.</li>
-                      <li>Les bugs subtils qui coutent du temps.</li>
-                      <li>Les compromis que je referais volontiers.</li>
-                    </ul>
-                    <div className={styles.heroActions}>
-                      <Link className="retro-button retro-button-success" to="/blog">
-                        Voir les articles
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className={styles.section}>
-              <div className="retro-window">
+              <div className={`retro-window ${styles.projectsWindow}`}>
                 <div className="retro-window-titlebar">
-                  <span>mes_projets.tbl</span>
-                  <span>tableau public</span>
+                  <span>Quelques outils en ligne</span>
+                  <span>petit mur de post-it</span>
                 </div>
-                <div className={`retro-window-body ${styles.sectionBody}`}>
+                <div className={`retro-window-body ${styles.projectsBody}`}>
                   <div className={styles.projectsHeader}>
                     <div>
-                      <h2 className={styles.sectionHeading}>Quelques projets en ligne</h2>
-                      <p>
+                      <h2 className={styles.sectionTitle}>Des projets simples, concrets, et deja utiles.</h2>
+                      <p className={styles.projectsIntro}>
                         Des outils que je fais evoluer en dehors des articles, avec une logique
-                        simple: utile d&apos;abord, joli apres.
+                        stable: utile d&apos;abord, lisible ensuite, et assez souple pour vivre
+                        longtemps.
                       </p>
                     </div>
                     <Link className="retro-button retro-button-outline" to="/mes-projets">
-                      Tous les projets
+                      Voir tous les projets
                     </Link>
                   </div>
 
-                  <div className="retro-table">
-                    <div className={`retro-table-row ${styles.projectHeaderRow}`}>
-                      <div className="retro-table-cell">STATUT</div>
-                      <div className="retro-table-cell">PROJET</div>
-                      <div className="retro-table-cell">DESCRIPTION</div>
-                      <div className="retro-table-cell">ACTION</div>
-                    </div>
-
+                  <div className={styles.projectNotes}>
                     {projectRows.map((project) => (
-                      <div key={project.name} className={`retro-table-row ${styles.projectRow}`}>
-                        <div className="retro-table-cell">
-                          <span className="retro-badge retro-badge-new">{project.status}</span>
-                        </div>
-                        <div className="retro-table-cell">
-                          <strong>{project.name}</strong>
-                        </div>
-                        <div className="retro-table-cell">{project.description}</div>
-                        <div className="retro-table-cell">
-                          <Link className="retro-button" to={project.href}>
-                            Ouvrir
-                          </Link>
-                        </div>
-                      </div>
+                      <article
+                        key={project.name}
+                        className={`retro-panel retro-panel-yellow ${styles.projectNote}`}
+                        style={{transform: `rotate(${project.angle})`}}>
+                        <span className={styles.noteTape} aria-hidden="true" />
+                        <span className="retro-badge">{project.status}</span>
+                        <h3 className={styles.projectTitle}>{project.name}</h3>
+                        <p className={styles.projectDescription}>{project.description}</p>
+                        <Link className="retro-button retro-button-primary" to={project.href}>
+                          Ouvrir l&apos;outil
+                        </Link>
+                      </article>
                     ))}
                   </div>
                 </div>
@@ -346,18 +310,19 @@ export default function Home() {
             <section className={styles.section}>
               <div className="retro-construction">
                 <div className={`retro-construction-inner ${styles.ctaBlock}`}>
-                  <span className="retro-badge">WORK IN PROGRESS</span>
-                  <h2 className={styles.ctaTitle}>Zone de decouverte en construction permanente</h2>
+                  <span className="retro-badge">A suivre</span>
+                  <h2 className={styles.ctaTitle}>Envie de fouiller un peu plus loin ?</h2>
                   <p>
-                    Si vous aimez les interfaces sans filtre et les retours d&apos;experience
-                    utiles, le blog et la doc sont juste en dessous.
+                    Le blog sert de carnet de bord. La documentation sert de base plus posee.
+                    Ensemble, les deux racontent pourquoi les projets existent et ce qu&apos;ils
+                    m&apos;ont appris.
                   </p>
                   <div className={styles.heroActions}>
                     <Link className="retro-button retro-button-danger" to="/blog">
                       Explorer le blog
                     </Link>
                     <Link className="retro-button retro-button-outline" to="/docs/intro">
-                      Lire la doc
+                      Lire la documentation
                     </Link>
                   </div>
                 </div>

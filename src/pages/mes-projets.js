@@ -6,34 +6,40 @@ const projects = [
   {
     name: 'Macro Planning',
     href: 'https://macro.h4ck3ur.com',
-    status: 'DISPONIBLE',
-    category: 'ORGANISATION',
+    status: 'Disponible',
+    category: 'Organisation',
     description:
       'Un outil de planification en ligne pour centraliser un macro planning sans friction.',
+    note: 'Pour garder une vue d ensemble',
+    angle: '-1.8deg',
   },
   {
     name: 'Estimation de projet',
     href: 'https://estimation.h4ck3ur.com',
-    status: 'DISPONIBLE',
-    category: 'PILOTAGE',
+    status: 'Disponible',
+    category: 'Pilotage',
     description:
       "Un raccourci utile pour estimer plus vite la charge, le cadrage et les zones floues d'un projet.",
+    note: 'Quand il faut cadrer vite',
+    angle: '1.2deg',
   },
   {
     name: 'Timeline',
     href: 'https://timeline.h4ck3ur.com/',
-    status: 'DISPONIBLE',
-    category: 'VISUALISATION',
+    status: 'Disponible',
+    category: 'Visualisation',
     description:
       'Un outil pour creer des timelines de projet, de formation, ou un melange des deux.',
+    note: 'Pour raconter une progression',
+    angle: '-0.7deg',
   },
 ];
 
 const marqueeItems = [
-  'PROJECT DATABASE ONLINE',
   'OUTILS MAISON',
-  'WORK IN PROGRESS ASSUME',
-  'CLIQUER SANS MODERATION',
+  'PETIT LABO',
+  'PROJETS EN EVOLUTION',
+  'POST-IT PUBLICS',
 ];
 
 export default function MesProjetsPage() {
@@ -52,109 +58,108 @@ export default function MesProjetsPage() {
           </div>
 
           <section className={styles.hero}>
-            <div className="retro-window retro-window-strong">
-              <div className="retro-window-titlebar">
-                <span>mes_projets.exe</span>
-                <span>portfolio public</span>
-              </div>
+            <div className={`retro-window retro-window-strong ${styles.heroWindow}`}>
               <div className={`retro-window-body ${styles.heroBody}`}>
-                <div className={styles.heroTop}>
-                  <div>
-                    <span className="retro-eyebrow">Portfolio personnel</span>
-                    <h1 className={styles.title}>MES PROJETS</h1>
+                <div className={styles.heroCopy}>
+                  <span className="retro-eyebrow">Mur de projets</span>
+                  <h1 className={styles.title}>Des outils simples pour de vrais besoins.</h1>
+                  <p className={styles.heroLead}>
+                    Cette page rassemble les petits services et prototypes qui ont gagne le droit de
+                    rester visibles. Pas parce qu&apos;ils sont parfaits, mais parce qu&apos;ils
+                    rendent deja service.
+                  </p>
+                  <div className={styles.heroActions}>
+                    <Link className="retro-button retro-button-primary" to="/blog">
+                      Lire les coulisses
+                    </Link>
+                    <Link className="retro-button retro-button-outline" to="/">
+                      Retour a l&apos;accueil
+                    </Link>
                   </div>
-                  <span className="retro-badge retro-badge-hot">ACTIVE</span>
                 </div>
 
-                <div className={styles.heroGrid}>
-                  <div className={`retro-panel retro-panel-yellow ${styles.heroPanel}`}>
-                    <p>
-                      Une page simple pour regrouper les outils et experiences que je publie en
-                      dehors des articles. Le but est de montrer des choses utiles, pas de faire
-                      semblant d&apos;avoir une licorne a chaque clic.
+                <aside className={styles.heroSidebar}>
+                  <div className={`retro-panel retro-panel-yellow ${styles.sidebarCard}`}>
+                    <span className={styles.pin} aria-hidden="true" />
+                    <p className={styles.sidebarTitle}>Regle simple</p>
+                    <p className={styles.sidebarText}>
+                      Si une idee devient vraiment utile, elle finit ici avec un sous-domaine et
+                      une interface suffisamment claire pour servir sans explication supplementaire.
                     </p>
                   </div>
-                  <div className="retro-counter">
-                    <div>PROJECTS: <strong>0003</strong></div>
-                    <div>UPDATED: <strong>2026</strong></div>
-                    <div>MOOD: <strong>SHIP IT</strong></div>
+
+                  <div className={`retro-panel ${styles.legendCard}`}>
+                    <span className="retro-badge">Petit pense-bete</span>
+                    <ul className={styles.legendList}>
+                      <li>Utile d&apos;abord</li>
+                      <li>Copiable ensuite</li>
+                      <li>Plus propre a chaque iteration</li>
+                    </ul>
                   </div>
-                </div>
+                </aside>
               </div>
             </div>
           </section>
-
-          <hr className="retro-groove" />
 
           <section className={styles.projectsSection}>
-            <div className="retro-window">
-              <div className="retro-window-titlebar">
-                <span>projets.tbl</span>
-                <span>3 lignes</span>
-              </div>
-              <div className={`retro-window-body ${styles.projectsBody}`}>
-                <div className="retro-table">
-                  <div className={`retro-table-row ${styles.headerRow}`}>
-                    <div className="retro-table-cell">STATUT</div>
-                    <div className="retro-table-cell">CATEGORIE</div>
-                    <div className="retro-table-cell">PROJET</div>
-                    <div className="retro-table-cell">DESCRIPTION</div>
-                    <div className="retro-table-cell">ACTION</div>
+            <div className={styles.notesGrid}>
+              {projects.map((project) => (
+                <article
+                  key={project.name}
+                  className={`retro-panel retro-panel-yellow ${styles.projectCard}`}
+                  style={{transform: `rotate(${project.angle})`}}>
+                  <span className={styles.tape} aria-hidden="true" />
+                  <div className={styles.cardMeta}>
+                    <span className="retro-badge retro-badge-new">{project.status}</span>
+                    <span className={styles.category}>{project.category}</span>
                   </div>
-
-                  {projects.map((project) => (
-                    <article key={project.name} className={`retro-table-row ${styles.projectRow}`}>
-                      <div className="retro-table-cell">
-                        <span className="retro-badge retro-badge-new">{project.status}</span>
-                      </div>
-                      <div className="retro-table-cell">{project.category}</div>
-                      <div className="retro-table-cell">
-                        <h2 className={styles.projectTitle}>{project.name}</h2>
-                      </div>
-                      <div className="retro-table-cell">
-                        <p className={styles.projectDescription}>{project.description}</p>
-                      </div>
-                      <div className="retro-table-cell">
-                        <Link className="retro-button retro-button-primary" to={project.href}>
-                          Ouvrir
-                        </Link>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-
-                <div className={styles.bottomRow}>
-                  <div className={`retro-panel ${styles.asidePanel}`}>
-                    <h2 className={styles.asideTitle}>Note de service</h2>
-                    <p>
-                      D&apos;autres outils arriveront ici au fil du temps. Si une idee merite un
-                      sous-domaine, elle finit generalement dans cette liste.
-                    </p>
-                  </div>
-                  <Link className="retro-button retro-button-outline" to="/">
-                    Retour a l&apos;accueil
+                  <h2 className={styles.projectTitle}>{project.name}</h2>
+                  <p className={styles.projectNote}>{project.note}</p>
+                  <p className={styles.projectDescription}>{project.description}</p>
+                  <Link className="retro-button retro-button-primary" to={project.href}>
+                    Ouvrir le projet
                   </Link>
-                </div>
-              </div>
+                </article>
+              ))}
             </div>
           </section>
 
-          <section className={styles.ctaSection}>
-            <div className="retro-construction">
-              <div className={`retro-construction-inner ${styles.ctaInner}`}>
-                <span className="retro-badge">WORK IN PROGRESS</span>
-                <h2 className={styles.ctaTitle}>Besoin de contexte avant de cliquer ?</h2>
-                <p>
-                  Le blog raconte souvent pourquoi ces projets existent, ce qu&apos;ils reglent et
-                  ce que j&apos;ai appris en les construisant.
-                </p>
-                <div className={styles.ctaActions}>
-                  <Link className="retro-button retro-button-danger" to="/blog">
-                    Lire le blog
-                  </Link>
-                  <Link className="retro-button retro-button-outline" to="/docs/intro">
-                    Parcourir la doc
-                  </Link>
+          <section className={styles.bottomSection}>
+            <div className={styles.bottomGrid}>
+              <div className={`retro-window ${styles.storyWindow}`}>
+                <div className="retro-window-titlebar">
+                  <span>Ce qu&apos;il y a derriere les liens</span>
+                  <span>contexte inclus</span>
+                </div>
+                <div className={`retro-window-body ${styles.storyBody}`}>
+                  <h2 className={styles.storyTitle}>Chaque projet commence comme une note de travail.</h2>
+                  <p>
+                    Souvent, le blog raconte le moment ou un besoin revient trop souvent pour
+                    rester dans un coin de tete. Quand le besoin se precise, il devient un outil.
+                  </p>
+                  <p>
+                    J&apos;essaie de garder cette logique visible: l&apos;outil, son intention, et
+                    les apprentissages qu&apos;il laisse derriere lui.
+                  </p>
+                </div>
+              </div>
+
+              <div className="retro-construction">
+                <div className={`retro-construction-inner ${styles.ctaCard}`}>
+                  <span className="retro-badge">Pour aller plus loin</span>
+                  <h2 className={styles.ctaTitle}>Le blog sert de cahier de bord pour ces outils.</h2>
+                  <p>
+                    Si tu veux comprendre pourquoi un projet existe, ce qu&apos;il essaie de
+                    simplifier, ou comment il a evolue, c&apos;est souvent la meilleure entree.
+                  </p>
+                  <div className={styles.ctaActions}>
+                    <Link className="retro-button retro-button-danger" to="/blog">
+                      Ouvrir le blog
+                    </Link>
+                    <Link className="retro-button retro-button-outline" to="/docs/intro">
+                      Parcourir la doc
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

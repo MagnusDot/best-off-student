@@ -4,11 +4,11 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
 const errorMessages = [
-  '404: FILE NOT FOUND',
-  'BAD URL OR TYPING INCIDENT DETECTED',
-  'CANNOT OPEN PAGE.BAT',
-  'THIS ADDRESS DOES NOT EXIST ANYMORE',
-  'PAGE NOT FOUND (CHECK YOUR BOOKMARKS)',
+  'Cette page s est probablement deplacee.',
+  "Quelqu'un a peut-etre change l'adresse.",
+  "Le lien etait bon un jour, moins aujourd'hui.",
+  'Cette note ne vit plus a cet endroit.',
+  "On dirait une URL qui a rate son virage.",
 ];
 
 export default function NotFoundWrapper(): ReactNode {
@@ -27,14 +27,12 @@ export default function NotFoundWrapper(): ReactNode {
           <div className="retro-marquee" aria-hidden="true">
             <div className="retro-marquee-track">
               {[
-                '404 ALERT',
-                'UNDER CONSTRUCTION SOMEWHERE ELSE',
-                'TRY HOME OR BLOG',
-                'MAGNUS DEV ERROR CENTER',
-                'CHECK THE URL',
-                '404 ALERT',
-                'UNDER CONSTRUCTION SOMEWHERE ELSE',
-                'TRY HOME OR BLOG',
+                'PAGE INTROUVABLE',
+                'RETROUVER LE FIL',
+                'RETOUR A L ACCUEIL',
+                'OUVRIR LE BLOG',
+                'PAGE INTROUVABLE',
+                'RETROUVER LE FIL',
               ].map((item, index) => (
                 <span key={`${item}-${index}`}>{item}</span>
               ))}
@@ -42,35 +40,30 @@ export default function NotFoundWrapper(): ReactNode {
           </div>
 
           <section className={styles.section}>
-            <div className="retro-window retro-window-strong">
-              <div className="retro-window-titlebar">
-                <span>error_404.exe</span>
-                <div className="retro-window-controls" aria-hidden="true">
-                  <span className="retro-window-control" />
-                  <span className="retro-window-control" />
-                  <span className="retro-window-control" />
-                </div>
-              </div>
-
+            <div className={`retro-window retro-window-strong ${styles.paperStack}`}>
               <div className={`retro-window-body ${styles.content}`}>
                 <div className={styles.topRow}>
-                  <div>
-                    <span className="retro-eyebrow">Module introuvable</span>
-                    <h1 className={`${styles.errorCode} retro-rainbow`}>404</h1>
+                  <div className={styles.headlineBlock}>
+                    <span className="retro-eyebrow">Oups, feuille egaree</span>
+                    <h1 className={styles.errorCode}>404</h1>
+                    <p className={styles.lead}>
+                      La page que vous cherchez n&apos;est plus sur ce bout de carnet.
+                    </p>
                   </div>
-                  <div className="retro-counter">
-                    <div>STATUS: <strong>NOT FOUND</strong></div>
-                    <div>RETRY: <strong>ADVISED</strong></div>
-                    <div>MOOD: <strong>OUPS</strong></div>
+
+                  <div className={`retro-panel retro-panel-yellow ${styles.quoteCard}`}>
+                    <span className={styles.pin} aria-hidden="true" />
+                    <p className={styles.quoteLabel}>Pense-bete</p>
+                    <p className={styles.quoteText}>{errorMessage}</p>
                   </div>
                 </div>
 
                 <div className={styles.grid}>
-                  <div className={`retro-panel retro-panel-yellow ${styles.messagePanel}`}>
-                    <h2 className={styles.title}>Page introuvable</h2>
+                  <div className={`retro-panel ${styles.messagePanel}`}>
+                    <h2 className={styles.title}>Reprendre le fil</h2>
                     <p className={styles.description}>
-                      Cette page a probablement ete deplacee, supprimee ou n&apos;a jamais existe.
-                      Le classique accident de navigation du web.
+                      Le plus simple est souvent de repartir depuis une page stable. Le blog et la
+                      documentation couvrent la plupart des sujets de ce site.
                     </p>
                     <div className={styles.actions}>
                       <Link className="retro-button retro-button-primary" to="/">
@@ -82,32 +75,31 @@ export default function NotFoundWrapper(): ReactNode {
                     </div>
                   </div>
 
-                  <div className="retro-window">
-                    <div className="retro-window-titlebar">
-                      <span>error_log.txt</span>
-                      <span>lecture seule</span>
-                    </div>
-                    <div className="retro-window-body">
-                      <pre className={`retro-panel ${styles.codeBlock}`}>
-{`> ${errorMessage}
-
-// Diagnostic rapide:
-// - verifier l'URL
-// - revenir a l'accueil
-// - ouvrir le blog ou la documentation
-
-const solution = 'repartir sur une page valide';`}
-                      </pre>
-                    </div>
+                  <div className={`retro-panel ${styles.doodleCard}`}>
+                    <svg viewBox="0 0 320 220" className={styles.doodle} aria-hidden="true">
+                      <path d="M28 50 C80 26, 118 24, 168 46" />
+                      <path d="M168 46 l46 10 l-30 26" />
+                      <path d="M38 160 C108 128, 148 198, 286 130" />
+                      <rect x="52" y="76" width="90" height="60" rx="18" />
+                      <rect x="182" y="108" width="82" height="56" rx="16" />
+                      <circle cx="234" cy="54" r="24" />
+                      <text x="69" y="112">home</text>
+                      <text x="197" y="141">blog</text>
+                      <text x="216" y="60">doc</text>
+                    </svg>
+                    <p className={styles.doodleCaption}>
+                      Un petit raccourci griffonne vers les pages qui servent le plus souvent de
+                      point de reprise.
+                    </p>
                   </div>
                 </div>
 
                 <div className="retro-construction">
                   <div className={`retro-construction-inner ${styles.tip}`}>
-                    <span className="retro-badge retro-badge-hot">TIP</span>
+                    <span className="retro-badge retro-badge-hot">Conseil</span>
                     <p>
-                      Si vous arrivez ici depuis un ancien lien, la page d&apos;accueil ou la doc
-                      ont probablement ce qu&apos;il vous faut.
+                      Si vous arrivez ici depuis un ancien lien, le contenu existe peut-etre encore
+                      ailleurs avec un titre ou une structure plus claire qu&apos;avant.
                     </p>
                   </div>
                 </div>

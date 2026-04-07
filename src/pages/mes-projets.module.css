@@ -1,109 +1,212 @@
 .page {
   width: 100%;
-  color: #000000;
+  color: #2d2d2d;
 }
 
 .hero,
 .projectsSection,
-.ctaSection {
-  margin-top: 16px;
+.bottomSection {
+  margin-top: 20px;
 }
 
-.heroBody,
-.projectsBody,
-.ctaInner {
+.heroWindow {
+  overflow: visible;
+}
+
+.heroBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+  gap: 24px;
+}
+
+.heroCopy,
+.heroSidebar {
   display: grid;
   gap: 16px;
-}
-
-.heroTop {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 .title {
-  margin-top: 8px;
-  font-size: clamp(3rem, 9vw, 5rem);
-}
-
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
-  gap: 16px;
-}
-
-.heroPanel p,
-.asidePanel p,
-.ctaInner p,
-.projectDescription {
   margin: 0;
-  line-height: 1.6;
+  max-width: 12ch;
+  font-size: clamp(3rem, 6vw, 4.9rem);
+  line-height: 0.98;
 }
 
-.headerRow,
-.projectRow {
-  grid-template-columns: 140px 150px minmax(160px, 220px) minmax(0, 1fr) 150px;
+.heroLead {
+  margin: 0;
+  max-width: 56ch;
+  font-size: 1.32rem;
+  line-height: 1.45;
 }
 
-.headerRow {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.projectTitle {
-  font-size: 1.2rem;
-}
-
-.bottomRow {
+.heroActions,
+.ctaActions {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-.asidePanel {
-  max-width: 640px;
+.sidebarCard,
+.legendCard {
+  position: relative;
+  display: grid;
+  gap: 10px;
 }
 
-.asideTitle,
-.ctaTitle {
-  font-size: 1.4rem;
-  margin: 0 0 8px;
+.sidebarCard {
+  min-height: 220px;
+  padding-top: 24px;
+  transform: rotate(-2deg);
 }
 
-.ctaTitle {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+.pin {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #2d2d2d;
+  background: #ff4d4d;
+  border-radius: 999px;
 }
 
-.ctaActions {
+.sidebarTitle {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sidebarText {
+  margin: 0;
+  font-size: 1.18rem;
+  line-height: 1.45;
+}
+
+.legendCard {
+  transform: rotate(1.3deg);
+}
+
+.legendList {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 1.14rem;
+  line-height: 1.5;
+}
+
+.notesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.projectCard {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  min-height: 320px;
+  align-content: start;
+}
+
+.tape {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 90px;
+  height: 24px;
+  background: rgba(229, 224, 216, 0.9);
+  border: 2px dashed rgba(45, 45, 45, 0.16);
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.cardMeta {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-@media (max-width: 900px) {
-  .heroGrid {
+.category {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2d5da1;
+}
+
+.projectTitle {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.projectNote {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2d5da1;
+}
+
+.projectDescription {
+  margin: 0;
+  font-size: 1.14rem;
+  line-height: 1.45;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.storyBody,
+.ctaCard {
+  display: grid;
+  gap: 14px;
+}
+
+.storyTitle,
+.ctaTitle {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.03;
+}
+
+.storyBody p,
+.ctaCard p {
+  margin: 0;
+  font-size: 1.14rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 996px) {
+  .heroBody,
+  .notesGrid,
+  .bottomGrid {
     grid-template-columns: 1fr;
   }
 
-  .headerRow,
-  .projectRow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .title {
+    max-width: none;
   }
 }
 
 @media (max-width: 640px) {
-  .headerRow,
-  .projectRow {
-    grid-template-columns: 1fr;
+  .hero,
+  .projectsSection,
+  .bottomSection {
+    margin-top: 16px;
   }
 
+  .heroActions,
   .ctaActions {
     display: grid;
+  }
+
+  .projectCard,
+  .sidebarCard,
+  .legendCard {
+    transform: none !important;
   }
 }
