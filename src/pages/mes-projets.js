@@ -19,6 +19,14 @@ const projects = [
     description:
       "Un raccourci utile pour estimer plus vite la charge, le cadrage et les zones floues d'un projet.",
   },
+  {
+    name: 'Timeline',
+    href: 'https://timeline.h4ck3ur.com/',
+    status: 'DISPONIBLE',
+    category: 'VISUALISATION',
+    description:
+      'Un outil pour creer des timelines de projet, de formation, ou un melange des deux.',
+  },
 ];
 
 const marqueeItems = [
@@ -67,7 +75,7 @@ export default function MesProjetsPage() {
                     </p>
                   </div>
                   <div className="retro-counter">
-                    <div>PROJECTS: <strong>0002</strong></div>
+                    <div>PROJECTS: <strong>0003</strong></div>
                     <div>UPDATED: <strong>2026</strong></div>
                     <div>MOOD: <strong>SHIP IT</strong></div>
                   </div>
@@ -82,7 +90,7 @@ export default function MesProjetsPage() {
             <div className="retro-window">
               <div className="retro-window-titlebar">
                 <span>projets.tbl</span>
-                <span>2 lignes</span>
+                <span>3 lignes</span>
               </div>
               <div className={`retro-window-body ${styles.projectsBody}`}>
                 <div className="retro-table">

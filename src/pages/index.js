@@ -51,6 +51,13 @@ const projectRows = [
       "Un outil pour cadrer plus vite la charge, l'ampleur et les angles morts d'un projet.",
     href: 'https://estimation.h4ck3ur.com',
   },
+  {
+    name: 'Timeline',
+    status: 'EN LIGNE',
+    description:
+      'Un outil pour creer des timelines de projet, de formation, ou un melange des deux.',
+    href: 'https://timeline.h4ck3ur.com/',
+  },
 ];
 
 const marqueeItems = [
