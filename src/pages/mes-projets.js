@@ -33,6 +33,16 @@ const projects = [
     note: 'Pour raconter une progression',
     angle: '-0.7deg',
   },
+  {
+    name: 'Burnup',
+    href: 'https://burnup.h4ck3ur.com/',
+    status: 'Disponible',
+    category: 'Pilotage',
+    description:
+      'Un burnup visuel pour suivre un sprint avec le scope initial, les ajouts, le done cumule, le reste a faire et la trajectoire optimale.',
+    note: 'Pour garder le sprint lisible',
+    angle: '1.6deg',
+  },
 ];
 
 const marqueeItems = [

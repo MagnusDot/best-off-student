@@ -75,6 +75,14 @@ const projectRows = [
     href: 'https://timeline.h4ck3ur.com/',
     angle: '-0.9deg',
   },
+  {
+    name: 'Burnup',
+    status: 'Pret a partager',
+    description:
+      'Suivre un sprint visuellement avec scope initial, ajouts, done cumule, reste a faire et trajectoire optimale.',
+    href: 'https://burnup.h4ck3ur.com/',
+    angle: '1.1deg',
+  },
 ];
 
 const marqueeItems = [
